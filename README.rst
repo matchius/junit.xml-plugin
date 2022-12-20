@@ -1,4 +1,4 @@
-junit.xml plugin for Kiwi TCMS
+junit.xml plugin for Kiwi TCMS, test case matching modification
 ==============================
 
 .. image:: https://img.shields.io/pypi/v/kiwitcms-junit.xml-plugin.svg
@@ -38,12 +38,28 @@ This package allows you to read junit.xml files and
 send the results to `Kiwi TCMS <http://kiwitcms.org>`_.
 
 
+Modification description
+------------
+This modification allows you to match the testcases name from junit xml to kiwi test case instance using the testcase id.
+Example:
+
+::
+
+    testcase_TC1_name
+
+Above example testcase name will be matched to the testcase id:1 in your kiwitcms
+The pattern:
+
+::
+
+    prefix_TC{id}_suffix
+
 Installation
 ------------
 
 ::
 
-    pip install kiwitcms-junit.xml-plugin
+    pip install .
 
 
 Configuration and environment

@@ -31,7 +31,7 @@ setup(name='kiwitcms-junit.xml-plugin',
       author='Kiwi TCMS',
       author_email='info@kiwitcms.org',
       license='GPLv3+',
-      url='https://github.com/kiwitcms/junit.xml-plugin',
+      url='https://github.com/matchius/junit.xml-plugin',
       install_requires=REQUIREMENTS,
       classifiers=[
           'Development Status :: 4 - Beta',

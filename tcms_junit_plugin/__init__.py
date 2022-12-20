@@ -20,9 +20,9 @@ class Plugin:  # pylint: disable=too-few-public-methods
         self.verbose = verbose
 
     def parse(
-        self,
-        junit_filenames,
-        progress_cb=None
+            self,
+            junit_filenames,
+            progress_cb=None
     ):  # pylint: disable=too-many-branches, too-many-locals
         self.backend.configure()
 
@@ -43,9 +43,11 @@ class Plugin:  # pylint: disable=too-few-public-methods
                 cases = list(xml)
 
             for xml_case in cases:
-                summary = f"{xml_case.classname}.{xml_case.name}"[:255]
+                name = f"{xml_case.name}"
+                s = name.index("_TC")
+                tc_id = name[(s + 3):name.index("_", s + 1)]
 
-                test_case, _ = self.backend.test_case_get_or_create(summary)
+                test_case = {"id": tc_id}
                 self.backend.add_test_case_to_plan(test_case['id'],
                                                    self.backend.plan_id)
 
@@ -73,8 +75,8 @@ class Plugin:  # pylint: disable=too-few-public-methods
                         break
 
                 for execution in self.backend.add_test_case_to_run(
-                    test_case['id'],
-                    self.backend.run_id,
+                        test_case['id'],
+                        self.backend.run_id,
                 ):
                     self.backend.update_test_execution(execution["id"],
                                                        status_id,
